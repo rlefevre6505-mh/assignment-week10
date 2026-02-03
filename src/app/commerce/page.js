@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import Image from "next/image";
+import ProductGrid from "../components/ProductGrid";
 
 export default function CommerceTest() {
   const department = faker.commerce.department();
@@ -24,4 +25,17 @@ export default function CommerceTest() {
       <Image src={avatar} alt="" width={300} height={400} />
     </main>
   );
+}
+
+export function generateProducts() {
+  return Array({
+    id: faker.string.uuid(),
+    name: faker.commerce.productName(),
+    description: faker.commerce.productDescription(),
+    price: faker.commerce.price({ min: 10, max: 100 }),
+    category: faker.commerce.department(),
+    image: faker.image.urlPicsumPhotos({ width: 300, height: 300 }),
+    rating: faker.number.float({ min: 1, max: 5, precision: 0.1 }),
+    inStock: faker.datatype.boolean(),
+  });
 }
