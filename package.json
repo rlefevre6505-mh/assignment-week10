@@ -10,7 +10,6 @@
     "seed": "node --env-file=.env.local database/seed.js"
   },
   "dependencies": {
-    "@faker-js/faker": "^10.2.0",
     "@supabase/supabase-js": "^2.93.3",
     "dotenv": "^17.2.3",
     "next": "16.1.6",
