@@ -1,6 +1,6 @@
 import { db } from "@/utils/dbconnection";
 import { faker } from "@faker-js/faker";
-import { createClient } from "@/lib/supabase/server";
+import { createClient } from "@supabase/supabase-js";
 import { Suspense } from "react";
 
 export default async function TestPage() {
@@ -24,24 +24,28 @@ export default async function TestPage() {
   // }
 
   // supabase allow bulk insert so we can create an array of objects and insert the array
-  const supabase = createClient(DATABASE_URL);
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+  );
 
   const seedStaff = async (entries) => {
     const staff = [];
     for (let i = 0; i < entries; i++) {
       staff.push({
-        first_name: faker.person.first_name(),
-        last_name: faker.person.last_name(),
-        role: faker.person.jobDescriptor(),
-        avatar_url: faker.image.personPortrait(),
+        first_name: faker.person.first_name,
+        last_name: faker.person.last_name,
+        role: faker.person.jobDescriptor,
+        avatar_url: faker.image.personPortrait,
       });
     }
-    await supbase.from(`staff`).insert(projects);
+    console.log(staff);
+
+    await supbase.from("staff").insert(staff);
   };
 
-  console.log(seedStaff(3));
-
-  //   await seedProjects(10)
+  await seedStaff(3);
+  console.log(staff);
 
   return (
     <>
