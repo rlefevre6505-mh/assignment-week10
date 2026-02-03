@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "node --env-file=.env.local database/seed.js"
   },
   "dependencies": {
     "@faker-js/faker": "^10.2.0",
