@@ -1,5 +1,5 @@
 import { db } from "../src/utils/dbconnection.js";
-import { Faker, es } from "@faker-js/faker";
+import { Faker, faker, es } from "@faker-js/faker";
 
 // supabase allow bulk insert so we can create an array of objects and insert the array
 // const supabase = createClient(
@@ -9,7 +9,6 @@ import { Faker, es } from "@faker-js/faker";
 
 // const seedStaff = async (entries) => {
 //   const staff = [];
-
 //   for (let i = 0; i < entries; i++) {
 //     staff.push({
 //       first_name: faker.person.first_name(),
@@ -39,8 +38,16 @@ async function seedStaff(entries) {
       `INSERT INTO staff (first_name, last_name, role, avatar_url) VALUES ($1, $2, $3, $4)`,
       [values.first_name, values.last_name, values.role, values.avatar],
     );
-    console.log("1 row added");
+    console.log();
   }
 }
 
-seedStaff(5);
+seedStaff(1);
+
+function loop(entries) {
+  for (let i = 0; i < entries; i++) {
+    faker.helpers.uniqueArray(fakerES.person.firstName());
+  }
+}
+
+console.log(loop(20));
