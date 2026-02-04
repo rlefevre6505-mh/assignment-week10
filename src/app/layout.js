@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Quicksand, TASA_Orbiter } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -8,6 +8,16 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const quicksandSans = Quicksand({
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+});
+
+const tasaSans = TASA_Orbiter({
+  variable: "--font-tasa",
   subsets: ["latin"],
 });
 
