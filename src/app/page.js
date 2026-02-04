@@ -1,10 +1,10 @@
 import Link from "next/link";
+import styles from "./main.module.css";
 
 export default function Home() {
   return (
-    <div>
+    <div className={styles.nav}>
       <Link href="/commerce">Digital storefront</Link>
-      <br></br>
       <Link href="/staff">Staff profiles</Link>
     </div>
   );
