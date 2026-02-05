@@ -1,21 +1,36 @@
+// import faker
 import { faker } from "@faker-js/faker";
 import Image from "next/image";
 import CommerceHeader from "../components/CommerceHeader";
 import CommerceFooter from "../components/CommerceFooter";
 
 export default function CommerceDemoPage() {
+  // initialise empty array for product generation
   const prodArray = [];
+
+  // set seed so results are always the same on each page load
+  faker.seed(40);
+
+  // create a function using a for loop to generate your chose number of products (I chose 28)
   async function generateArray() {
     for (let i = 0; i < 28; i++) {
       prodArray.push({
+        // product code sliced to only the first 8 digits
         id: faker.string.uuid().slice(0, 8),
+        // product name
         name: faker.commerce.productName(),
+        // short description of the product
         description: faker.commerce.productDescription(),
+        // product price with minimum and maximum values
         price: faker.commerce.price({ min: 10, max: 100 }),
+        // product department or category
         category: faker.commerce.department(),
+        // random image with chosen width and height values
         image: faker.image.urlPicsumPhotos({ width: 300, height: 300 }),
+        // random number with chosen min and max values
         rating: faker.number.int({ min: 1, max: 5 }),
         reviews: faker.number.int({ min: 0, max: 300 }),
+        // boolean
         inStock: faker.datatype.boolean(),
       });
     }
