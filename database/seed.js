@@ -1,5 +1,5 @@
 import { db } from "../src/utils/dbconnection.js";
-import { Faker, faker, es } from "@faker-js/faker";
+import { Faker, es } from "@faker-js/faker";
 
 // supabase allow bulk insert so we can create an array of objects and insert the array
 // const supabase = createClient(
