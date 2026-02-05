@@ -23,8 +23,11 @@ import { Faker, faker, es } from "@faker-js/faker";
 
 // seedStaff(5);
 
+// new instance of Faker, localised to spanish
 const fakerES = new Faker({ locale: [es] });
 
+// seeding function (dynamic creation of values, inserted to DB via query in a loop)
+// alternatively, a more complex query could be used, or bulk insert if producing an array of objects
 async function seedStaff(entries) {
   for (let i = 0; i < entries; i++) {
     const values = {
@@ -42,12 +45,14 @@ async function seedStaff(entries) {
   }
 }
 
-seedStaff(1);
+// call seed function using "npm run seed"
+// argument is the number of itterations
+seedStaff(6);
 
-function loop(entries) {
-  for (let i = 0; i < entries; i++) {
-    faker.helpers.uniqueArray(fakerES.person.firstName());
-  }
-}
+// function loop(entries) {
+//   for (let i = 0; i < entries; i++) {
+//     faker.helpers.uniqueArray(fakerES.person.firstName());
+//   }
+// }
 
-console.log(loop(20));
+// console.log(loop(20));
